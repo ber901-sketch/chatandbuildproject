@@ -1,0 +1,48 @@
+# Create Next.js app
+npx create-next-app@latest cadence-connexus
+cd cadence-connexus
+
+# Install core dependencies
+npm i @supabase/supabase-js nodemailer @sendgrid/mail pptxgenjs fpdf --save
+
+# ✅ Install ALL required Radix UI primitives for shadcn/ui components
+npm i @radix-ui/react-alert-dialog @radix-ui/react-slot @radix-ui/react-label @radix-ui/react-accordion --save
+
+# Install UI utilities
+npm i lucide-react class-variance-authority clsx tailwind-merge framer-motion --save
+
+# Install dev dependencies
+npm i -D typescript @types/node @types/react @types/react-dom @types/nodemailer autoprefixer postcss tailwindcss tailwindcss-animate eslint eslint-config-next --save-dev
+
+# (Optional: if other shadcn components are added later)
+# npm i @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-popover @radix-ui/react-toast @radix-ui/react-tabs --save
+
+# Clean up before build (optional but recommended)
+rm -rf .next node_modules package-lock.json
+npm i
+
+# Add environment variables
+cp .env.example .env.local
+
+# Development
+npm run dev
+
+# Build and deploy
+npm run build
+
+# ✅ Deployment target (recommended: Vercel)
+npm i -g vercel
+vercel
+
+# ✅ CRITICAL: Ensure these environment variables are set in Vercel dashboard:
+# - NEXT_PUBLIC_SUPABASE_URL
+# - NEXT_PUBLIC_SUPABASE_ANON_KEY
+# - SUPABASE_SERVICE_ROLE_KEY
+# - SMTP_HOST
+# - SMTP_PORT
+# - SMTP_USER
+# - SMTP_PASS
+# - SENDGRID_API_KEY (if using SendGrid)
+# - EVENTBRITE_PRIVATE_TOKEN
+# - EVENTBRITE_ORGANIZATION_ID
+# - OPENAI_API_KEY (for ChatandBuild integration)
